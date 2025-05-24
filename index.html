@@ -370,60 +370,6 @@
             letter-spacing: 0.05em;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 0, 255, 0.6);
-            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #00ffff;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .feature-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
         .cta-button {
             display: inline-block;
             padding: 1rem 3rem;
@@ -599,111 +545,29 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Bullet Comments (弹幕) Rain */
-        .danmaku-container {
+        /* Matrix Rain Effect */
+        .matrix-rain {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
             pointer-events: none;
-            z-index: 6;
+            z-index: 5;
         }
 
-        .danmaku {
+        .matrix-column {
             position: absolute;
-            white-space: nowrap;
-            font-size: 24px;
-            font-weight: bold;
-            font-family: 'Arial', sans-serif;
-            animation: danmakuMove linear;
-            text-shadow: 
-                2px 2px 0 #000,
-                -2px -2px 0 #000,
-                2px -2px 0 #000,
-                -2px 2px 0 #000,
-                0 0 10px currentColor;
+            top: -100%;
+            font-size: 16px;
+            line-height: 1;
+            color: #0f0;
+            animation: matrixFall linear infinite;
+            text-shadow: 0 0 5px #0f0;
         }
 
-        @keyframes danmakuMove {
-            from {
-                transform: translateX(100vw);
-            }
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Different danmaku styles */
-        .danmaku-top {
-            top: 5%;
-            color: #ff0080;
-            font-size: 32px;
-            animation-duration: 8s;
-        }
-
-        .danmaku-mid-high {
-            top: 15%;
-            color: #00ffff;
-            font-size: 28px;
-            animation-duration: 10s;
-        }
-
-        .danmaku-mid {
-            top: 25%;
-            color: #ffff00;
-            font-size: 36px;
-            animation-duration: 7s;
-        }
-
-        .danmaku-mid-low {
-            top: 35%;
-            color: #ff00ff;
-            font-size: 30px;
-            animation-duration: 9s;
-        }
-
-        .danmaku-low {
-            top: 45%;
-            color: #00ff00;
-            font-size: 34px;
-            animation-duration: 8s;
-        }
-
-        .danmaku-bottom {
-            top: 55%;
-            color: #ff8000;
-            font-size: 26px;
-            animation-duration: 11s;
-        }
-
-        .danmaku-very-bottom {
-            top: 65%;
-            color: #8000ff;
-            font-size: 32px;
-            animation-duration: 9s;
-        }
-
-        .danmaku-ultra-bottom {
-            top: 75%;
-            color: #ff0088;
-            font-size: 28px;
-            animation-duration: 10s;
-        }
-
-        .danmaku-extreme-bottom {
-            top: 85%;
-            color: #00ff88;
-            font-size: 30px;
-            animation-duration: 8s;
-        }
-
-        .danmaku-final {
-            top: 92%;
-            color: #ffaa00;
-            font-size: 26px;
-            animation-duration: 12s;
+        @keyframes matrixFall {
+            to { transform: translateY(200vh); }
         }
 
         /* Main Content for Section 3 */
@@ -742,31 +606,6 @@
             color: #0f0;
             margin-bottom: 3rem;
             opacity: 0.8;
-        }
-
-        /* Matrix Rain Effect */
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .matrix-column {
-            position: absolute;
-            top: -100%;
-            font-size: 16px;
-            line-height: 1;
-            color: #0f0;
-            animation: matrixFall linear infinite;
-            text-shadow: 0 0 5px #0f0;
-        }
-
-        @keyframes matrixFall {
-            to { transform: translateY(200vh); }
         }
 
         /* Glitch Effect */
@@ -867,240 +706,277 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Section 4 - Gallery Styles */
+        /* Section 4 - Enhanced Gallery Styles (替换部分) */
         #section-3 {
+            min-height: 100vh;
             background: #000;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Cityscape Background Layers */
-        .cityscape-layer {
-            position: absolute;
-            top: 0;
-            width: 200%;
-            height: 100%;
-            background-image: 
-                linear-gradient(to bottom, rgba(138, 43, 226, 0.3) 0%, rgba(255, 20, 147, 0.4) 50%, rgba(255, 215, 0, 0.2) 100%);
-            background-size: 100% 100%;
+        #section-3::before {
+            display: none;
         }
 
-        .cityscape-layer::before,
-        .cityscape-layer::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-repeat: repeat;
-        }
-
-        .cityscape-layer::before {
-            background-image: 
-                repeating-linear-gradient(90deg, 
-                    transparent 0px, 
-                    transparent 20px, 
-                    rgba(138, 43, 226, 0.6) 20px, 
-                    rgba(138, 43, 226, 0.6) 25px,
-                    transparent 25px,
-                    transparent 40px,
-                    rgba(255, 20, 147, 0.5) 40px,
-                    rgba(255, 20, 147, 0.5) 45px,
-                    transparent 45px,
-                    transparent 60px
-                ),
-                repeating-linear-gradient(0deg,
-                    transparent 0px,
-                    transparent 30px,
-                    rgba(138, 43, 226, 0.3) 30px,
-                    rgba(138, 43, 226, 0.3) 32px,
-                    transparent 32px,
-                    transparent 60px,
-                    rgba(255, 20, 147, 0.3) 60px,
-                    rgba(255, 20, 147, 0.3) 62px,
-                    transparent 62px,
-                    transparent 90px
-                );
-            filter: blur(1px);
-        }
-
-        .cityscape-layer::after {
-            background: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent 0px,
-                    transparent 15px,
-                    rgba(30, 0, 60, 0.8) 15px,
-                    rgba(30, 0, 60, 0.8) 35px,
-                    transparent 35px,
-                    transparent 50px
-                ),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent 0px,
-                    transparent 20px,
-                    rgba(60, 0, 120, 0.6) 20px,
-                    rgba(60, 0, 120, 0.6) 80px,
-                    transparent 80px,
-                    transparent 100px
-                );
-            opacity: 0.7;
-        }
-
-        .cityscape-left {
-            left: -100%;
-            animation: slideFromLeft 8s ease-in-out infinite;
-        }
-
-        .cityscape-right {
-            right: -100%;
-            animation: slideFromRight 8s ease-in-out infinite;
-            animation-delay: 4s;
-        }
-
-        @keyframes slideFromLeft {
-            0% { transform: translateX(0); opacity: 0; }
-            20% { opacity: 1; }
-            50% { transform: translateX(100%); opacity: 1; }
-            70% { opacity: 0; }
-            100% { transform: translateX(100%); opacity: 0; }
-        }
-
-        @keyframes slideFromRight {
-            0% { transform: translateX(0); opacity: 0; }
-            20% { opacity: 1; }
-            50% { transform: translateX(-100%); opacity: 1; }
-            70% { opacity: 0; }
-            100% { transform: translateX(-100%); opacity: 0; }
-        }
-
-        /* Repeating Pattern Overlay */
-        .pattern-overlay {
+        /* Futuristic Grid Background */
+        .futuristic-grid {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: repeating-linear-gradient(
-                45deg,
-                transparent 0px,
-                transparent 50px,
-                rgba(138, 43, 226, 0.1) 50px,
-                rgba(138, 43, 226, 0.1) 52px,
-                transparent 52px,
-                transparent 100px,
-                rgba(255, 20, 147, 0.1) 100px,
-                rgba(255, 20, 147, 0.1) 102px,
-                transparent 102px,
-                transparent 150px
-            );
-            animation: patternMove 10s linear infinite;
+            background-image: 
+                linear-gradient(rgba(138, 43, 226, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(138, 43, 226, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(1000px) rotateX(60deg);
+            animation: gridFlow 20s linear infinite;
         }
 
-        @keyframes patternMove {
-            0% { transform: translateX(0) translateY(0); }
-            100% { transform: translateX(150px) translateY(150px); }
+        @keyframes gridFlow {
+            0% { transform: perspective(1000px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(1000px) rotateX(60deg) translateY(50px); }
         }
 
-        .gallery-container {
-            position: relative;
-            z-index: 2;
+        /* Holographic Overlay */
+        .holographic-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(138, 43, 226, 0.3) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 20, 147, 0.3) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 255, 255, 0.2) 0%, transparent 60%);
+            animation: holographicShift 15s ease-in-out infinite;
+            mix-blend-mode: screen;
         }
 
-        .gallery-wrapper {
+        @keyframes holographicShift {
+            0%, 100% { opacity: 0.3; filter: hue-rotate(0deg); }
+            50% { opacity: 0.6; filter: hue-rotate(180deg); }
+        }
+
+        /* Floating Geometric Shapes */
+        .geometric-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            animation: floatShape 20s infinite;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 5%;
+            transform: rotate(45deg);
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            border-radius: 50%;
+            border-color: rgba(255, 20, 147, 0.5);
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 15%;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.5);
+            animation-delay: 10s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(1); 
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translateY(-30px) rotate(90deg) scale(1.1); 
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(20px) rotate(180deg) scale(0.9); 
+                opacity: 0.4;
+            }
+            75% { 
+                transform: translateY(-10px) rotate(270deg) scale(1.05); 
+                opacity: 0.5;
+            }
+        }
+
+        /* Enhanced 3D Carousel Container */
+        .carousel-container {
             position: relative;
+            width: 100%;
+            height: 70vh;
+            perspective: 1500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 70vh;
-            margin-top: 2rem;
-            perspective: 1200px;
         }
 
-        .gallery-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-style: preserve-3d;
-        }
-
-        .gallery-item {
-            flex: 0 0 60vw;
-            max-width: 800px;
-            margin: 0 2rem;
-            transition: all 0.6s ease;
-            transform-style: preserve-3d;
-        }
-
-        .gallery-item.active {
-            transform: translateZ(50px) scale(1.1);
-        }
-
-        .gallery-item.prev,
-        .gallery-item.next {
-            transform: translateZ(-100px) scale(0.8);
-            opacity: 0.7;
-            filter: blur(2px);
-        }
-
-        .video-container {
+        .carousel-track {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            background: #111;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        /* Video Cards */
+        .video-card {
+            position: absolute;
+            width: 70vw;
+            max-width: 900px;
+            height: 100%;
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            transition: all 1s cubic-bezier(0.4, 0.0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .video-card.active {
+            transform: translate(-50%, -50%) translateZ(0) scale(1);
+            z-index: 3;
+            pointer-events: auto;
+        }
+
+        .video-card.next {
+            transform: translate(-50%, -50%) translateX(50%) translateZ(-300px) rotateY(-25deg) scale(0.8);
+            opacity: 0.7;
+            filter: brightness(0.7);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .video-card.prev {
+            transform: translate(-50%, -50%) translateX(-50%) translateZ(-300px) rotateY(25deg) scale(0.8);
+            opacity: 0.7;
+            filter: brightness(0.7);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Video Frame */
+        .video-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(138, 43, 226, 0.4);
-            border: 2px solid transparent;
-            background-clip: padding-box;
+            box-shadow: 
+                0 0 50px rgba(138, 43, 226, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
-        .video-container::before {
+        /* Animated Border */
+        .video-frame::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #8a2be2, #ff1493, #00ffff, #8a2be2);
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                #8a2be2, #ff1493, #00ffff, #ffff00, 
+                #ff00ff, #8a2be2);
+            background-size: 400% 400%;
             border-radius: 20px;
             z-index: -1;
-            animation: borderAnimation 3s linear infinite;
+            animation: borderGradient 8s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        @keyframes borderAnimation {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .video-card.active .video-frame::before {
+            opacity: 1;
         }
 
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
+        @keyframes borderGradient {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        /* Video Container */
+        .video-wrapper {
+            position: relative;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #00ffff;
-            font-size: 2rem;
-            font-weight: bold;
         }
 
-        .gallery-nav {
+        .video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 17px;
+        }
+
+        /* Video Info Overlay */
+        .video-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .video-card.active .video-info {
+            transform: translateY(0);
+        }
+
+        .video-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .video-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        /* Enhanced Navigation Buttons */
+        .nav-button {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #00ffff;
-            color: #00ffff;
-            font-size: 2rem;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid transparent;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1108,43 +984,184 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
         }
 
-        .gallery-nav:hover {
-            background: #00ffff;
-            color: #000;
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #8a2be2, #ff1493, #00ffff);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-button:hover::before {
+            opacity: 1;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nav-button:hover {
             transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 30px #00ffff;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
         }
 
-        .gallery-nav.prev {
+        .nav-button.prev {
             left: 2rem;
         }
 
-        .gallery-nav.next {
+        .nav-button.next {
             right: 2rem;
         }
 
-        .gallery-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-            gap: 1rem;
+        .nav-arrow {
+            font-size: 2rem;
+            color: #00ffff;
+            transition: transform 0.3s ease;
         }
 
-        .gallery-indicator {
-            width: 12px;
-            height: 12px;
+        .nav-button:hover .nav-arrow {
+            transform: scale(1.2);
+        }
+
+        .nav-button.prev .nav-arrow {
+            transform: translateX(-2px);
+        }
+
+        .nav-button.next .nav-arrow {
+            transform: translateX(2px);
+        }
+
+        /* Progress Indicators */
+        .progress-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .progress-dot {
+            width: 15px;
+            height: 15px;
+            border: 2px solid rgba(138, 43, 226, 0.5);
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: linear-gradient(45deg, #8a2be2, #ff1493);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
             transition: all 0.3s ease;
         }
 
-        .gallery-indicator.active {
+        .progress-dot.active {
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .progress-dot.active::after {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Video Controls */
+        .video-controls {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card.active:hover .video-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            width: 45px;
+            height: 45px;
+            background: transparent;
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            border-radius: 50%;
+            color: #00ffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .control-btn:hover {
+            background: rgba(138, 43, 226, 0.3);
+            border-color: #00ffff;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Particle Effects */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
             background: #00ffff;
-            box-shadow: 0 0 20px #00ffff;
-            transform: scale(1.5);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 10s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translate(0, 100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100px, -100vh) scale(1);
+                opacity: 0;
+            }
         }
 
         /* Section 5 - Join the Elite with 3D Wave Effect */
@@ -1225,32 +1242,6 @@
             overflow: hidden;
         }
 
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: float-particle 15s infinite;
-        }
-
-        @keyframes float-particle {
-            0% {
-                transform: translateY(100vh) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-
         /* Content styling adjustments for readability */
         #section-4 .container {
             position: relative;
@@ -1282,13 +1273,86 @@
             background: linear-gradient(45deg, #8b5cf6, #a78bfa);
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
         }
+
+        /* Email Contact Styling */
+        .contact-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .email-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            animation: emailGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes emailGlow {
+            from { 
+                color: #00ffff; 
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            }
+            to { 
+                color: #ff00ff; 
+                text-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+            }
+        }
+
+        .email-address {
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Music Control Button */
+        .music-control {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-control:hover {
+            background: rgba(0, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .music-control.playing {
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+            }
+            50% { 
+                box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
+            }
+        }
+
+        .music-icon {
+            font-size: 1.5rem;
+            color: #00ffff;
+        }
+
+        @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
-            }
-            
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
             }
             
             .info-grid {
@@ -1304,27 +1368,50 @@
                 font-size: 10px;
             }
 
-            .gallery-item {
-                flex: 0 0 85vw;
+            .video-card {
+                width: 85vw;
             }
 
-            .gallery-nav {
-                width: 45px;
-                height: 45px;
-                font-size: 1.5rem;
+            .nav-button {
+                width: 60px;
+                height: 60px;
             }
 
-            .gallery-nav.prev {
+            .nav-button.prev {
                 left: 1rem;
             }
 
-            .gallery-nav.next {
+            .nav-button.next {
                 right: 1rem;
             }
-        
+
+            .video-title {
+                font-size: 1.4rem;
+            }
+
+            .video-description {
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Background Music -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="music/music1.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl">
+        <span class="music-icon" id="musicIcon">🎵</span>
+    </div>
+    
     <!-- Navigation Dots -->
     <div class="nav-dots">
         <div class="nav-dot active" onclick="scrollToSection(0)"></div>
@@ -1387,9 +1474,6 @@
         <!-- Matrix Rain Effect -->
         <div class="matrix-rain" id="matrixRain"></div>
 
-        <!-- Bullet Comments (弹幕) Container -->
-        <div class="danmaku-container" id="danmakuContainer"></div>
-
         <!-- Main Content -->
         <div class="info-content-container">
             <h1 class="info-main-title glitch" data-text="Everything is">
@@ -1418,45 +1502,113 @@
         </div>
     </section>
 
-    <!-- Section 4: Our Gallery -->
-    <section class="section" id="section-3">
-        <!-- Animated Cityscape Background -->
-        <div class="cityscape-layer cityscape-left"></div>
-        <div class="cityscape-layer cityscape-right"></div>
-        <div class="pattern-overlay"></div>
+    <!-- Section 4: Enhanced Gallery -->
+    <section id="section-3">
+        <!-- Background Effects -->
+        <div class="futuristic-grid"></div>
+        <div class="holographic-overlay"></div>
         
+        <!-- Floating Geometric Shapes -->
+        <div class="geometric-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+
+        <!-- Particles -->
+        <div class="particles" id="particlesContainer"></div>
+
         <div class="container">
-            <h2 class="section-title">Our Gallery</h2>
+            <h2 class="section-title">Experience Our Vision</h2>
             
-            <div class="gallery-container">
-                <div class="gallery-wrapper">
-                    <div class="gallery-nav prev" onclick="changeGalleryItem(-1)">‹</div>
-                    <div class="gallery-nav next" onclick="changeGalleryItem(1)">›</div>
-                    
-                    <div class="gallery-track" id="galleryTrack">
-                        <div class="gallery-item active">
-                            <div class="video-container">
-                                <video controls>
+            <!-- 3D Carousel -->
+            <div class="carousel-container">
+                <!-- Navigation Buttons -->
+                <button class="nav-button prev" onclick="navigateCarousel(-1)">
+                    <span class="nav-arrow">‹</span>
+                </button>
+                <button class="nav-button next" onclick="navigateCarousel(1)">
+                    <span class="nav-arrow">›</span>
+                </button>
+
+                <!-- Carousel Track -->
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Video Card 1 -->
+                    <div class="video-card active" data-index="0">
+                        <div class="video-frame">
+                            <div class="video-wrapper">
+                                <video class="video-element" loop muted>
                                     <source src="videos/demo1.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
+                                    <div style="background: linear-gradient(135deg, #8a2be2, #ff1493); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                        VR Environment Demo
+                                    </div>
                                 </video>
                             </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Immersive VR Environments</h3>
+                                <p class="video-description">Step into dreamlike worlds where reality bends to your imagination. Experience seamless transitions between virtual and physical spaces.</p>
+                            </div>
+                            <div class="video-controls">
+                                <button class="control-btn play-pause">▶</button>
+                                <button class="control-btn mute-unmute">🔊</button>
+                                <button class="control-btn fullscreen">⛶</button>
+                            </div>
                         </div>
-                        <div class="gallery-item next">
-                            <div class="video-container">
-                                <video controls>
+                    </div>
+
+                    <!-- Video Card 2 -->
+                    <div class="video-card next" data-index="1">
+                        <div class="video-frame">
+                            <div class="video-wrapper">
+                                <video class="video-element" loop muted>
                                     <source src="videos/demo2.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
+                                    <div style="background: linear-gradient(135deg, #00ffff, #ff00ff); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                        Interactive Design Demo
+                                    </div>
                                 </video>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Real-time Audio/Video Fusion</h3>
+                                <p class="video-description">Experience the convergence of sight and sound. Our technology creates dynamic environments that respond to both visual and auditory inputs.</p>
+                            </div>
+                            <div class="video-controls">
+                                <button class="control-btn play-pause">▶</button>
+                                <button class="control-btn mute-unmute">🔊</button>
+                                <button class="control-btn fullscreen">⛶</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Card 3 -->
+                    <div class="video-card prev" data-index="2">
+                        <div class="video-frame">
+                            <div class="video-wrapper">
+                                <video class="video-element" loop muted>
+                                    <source src="videos/demo3.mp4" type="video/mp4">
+                                    <div style="background: linear-gradient(135deg, #ffff00, #ff0080); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                                        Social VR Demo
+                                    </div>
+                                </video>
+                            </div>
+                            <div class="video-info">
+                                <h3 class="video-title">Enhanced Social Interaction</h3>
+                                <p class="video-description">Connect with others in ways never before possible. Share experiences that transcend physical boundaries in our social VR spaces.</p>
+                            </div>
+                            <div class="video-controls">
+                                <button class="control-btn play-pause">▶</button>
+                                <button class="control-btn mute-unmute">🔊</button>
+                                <button class="control-btn fullscreen">⛶</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="gallery-indicators">
-                    <div class="gallery-indicator active" onclick="goToGalleryItem(0)"></div>
-                    <div class="gallery-indicator" onclick="goToGalleryItem(1)"></div>
-                </div>
+            </div>
+
+            <!-- Progress Indicators -->
+            <div class="progress-container">
+                <div class="progress-dot active" onclick="goToSlide(0)"></div>
+                <div class="progress-dot" onclick="goToSlide(1)"></div>
+                <div class="progress-dot" onclick="goToSlide(2)"></div>
             </div>
         </div>
     </section>
@@ -1496,68 +1648,158 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="cta-button">Apply Now</a>
+            
+            <!-- Email Contact Information -->
+            <div class="contact-info">
+                <span class="email-icon">✉</span>
+                <span class="email-address">vrlalaland@gmail.com</span>
+            </div>
+            
+            <a href="recruitment.html" class="cta-button">Apply Now</a>
         </div>
     </section>
 
     <script>
-        // Gallery functionality
-        let currentGalleryIndex = 0;
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const totalItems = galleryItems.length;
+        // Enhanced Gallery with Video Management (代码1的Gallery逻辑)
+        let currentIndex = 0;
+        const cards = document.querySelectorAll('.video-card');
+        const dots = document.querySelectorAll('.progress-dot');
+        const totalCards = cards.length;
 
-        function updateGalleryDisplay() {
-            const track = document.getElementById('galleryTrack');
-            const translateX = -currentGalleryIndex * (100 / totalItems);
-            track.style.transform = `translateX(${translateX}%)`;
-
-            // Update item classes
-            galleryItems.forEach((item, index) => {
-                item.classList.remove('active', 'prev', 'next');
+        function updateCarousel() {
+            cards.forEach((card, index) => {
+                card.classList.remove('active', 'next', 'prev');
                 
-                if (index === currentGalleryIndex) {
-                    item.classList.add('active');
-                } else if (index === currentGalleryIndex - 1 || (currentGalleryIndex === 0 && index === totalItems - 1)) {
-                    item.classList.add('prev');
-                } else if (index === currentGalleryIndex + 1 || (currentGalleryIndex === totalItems - 1 && index === 0)) {
-                    item.classList.add('next');
+                if (index === currentIndex) {
+                    card.classList.add('active');
+                    // Auto-play video when active
+                    const video = card.querySelector('.video-element');
+                    if (video) {
+                        video.play().catch(e => console.log('Auto-play prevented'));
+                    }
+                } else if (index === (currentIndex + 1) % totalCards) {
+                    card.classList.add('next');
+                    // Pause non-active videos
+                    const video = card.querySelector('.video-element');
+                    if (video) video.pause();
+                } else if (index === (currentIndex - 1 + totalCards) % totalCards) {
+                    card.classList.add('prev');
+                    // Pause non-active videos
+                    const video = card.querySelector('.video-element');
+                    if (video) video.pause();
                 }
             });
 
-            // Update indicators
-            const indicators = document.querySelectorAll('.gallery-indicator');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentGalleryIndex);
+            // Update progress dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
             });
         }
 
-        function changeGalleryItem(direction) {
-            currentGalleryIndex += direction;
-            
-            if (currentGalleryIndex < 0) {
-                currentGalleryIndex = totalItems - 1;
-            } else if (currentGalleryIndex >= totalItems) {
-                currentGalleryIndex = 0;
-            }
-            
-            updateGalleryDisplay();
+        function navigateCarousel(direction) {
+            currentIndex = (currentIndex + direction + totalCards) % totalCards;
+            updateCarousel();
         }
 
-        function goToGalleryItem(index) {
-            currentGalleryIndex = index;
-            updateGalleryDisplay();
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
         }
 
-        // Auto-play gallery
-        setInterval(() => {
-            if (currentGalleryIndex < 1) {
-                changeGalleryItem(1);
-            } else {
-                currentGalleryIndex = 0;
-                updateGalleryDisplay();
-            }
-        }, 5000);
+        // Video Controls
+        document.querySelectorAll('.video-card').forEach(card => {
+            const video = card.querySelector('.video-element');
+            const playPauseBtn = card.querySelector('.play-pause');
+            const muteBtn = card.querySelector('.mute-unmute');
+            const fullscreenBtn = card.querySelector('.fullscreen');
 
+            if (video && playPauseBtn) {
+                playPauseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (video.paused) {
+                        video.play();
+                        playPauseBtn.textContent = '⏸';
+                    } else {
+                        video.pause();
+                        playPauseBtn.textContent = '▶';
+                    }
+                });
+
+                video.addEventListener('play', () => {
+                    playPauseBtn.textContent = '⏸';
+                });
+
+                video.addEventListener('pause', () => {
+                    playPauseBtn.textContent = '▶';
+                });
+            }
+
+            if (video && muteBtn) {
+                muteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    video.muted = !video.muted;
+                    muteBtn.textContent = video.muted ? '🔇' : '🔊';
+                });
+            }
+
+            if (video && fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    }
+                });
+            }
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                navigateCarousel(-1);
+            } else if (e.key === 'ArrowRight') {
+                navigateCarousel(1);
+            }
+        });
+
+        // Touch/Swipe Support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.carousel-container').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.carousel-container').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                navigateCarousel(1); // Swipe left, go next
+            } else if (touchEndX > touchStartX + 50) {
+                navigateCarousel(-1); // Swipe right, go prev
+            }
+        }
+
+        // Generate Particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Initialize Enhanced Gallery
+        createParticles();
+        updateCarousel();
+
+        // 保持原有的其他JavaScript功能
         // Smooth scrolling and navigation
         function scrollToSection(index) {
             const section = document.getElementById(`section-${index}`);
@@ -1828,6 +2070,109 @@
                 container.appendChild(particle);
             }
         }
+
+        // Music Management
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+
+        // Initialize music settings
+        function initMusic() {
+            // Check if music should be playing from localStorage
+            const shouldPlay = localStorage.getItem('musicPlaying') !== 'false';
+            const currentTime = localStorage.getItem('musicCurrentTime') || 0;
+            
+            if (backgroundMusic) {
+                backgroundMusic.currentTime = parseFloat(currentTime);
+                backgroundMusic.volume = 0.3; // Set volume to 30%
+                
+                if (shouldPlay) {
+                    // Attempt to play music
+                    playMusic();
+                } else {
+                    updateMusicUI(false);
+                }
+
+                // Save current time periodically
+                backgroundMusic.addEventListener('timeupdate', () => {
+                    localStorage.setItem('musicCurrentTime', backgroundMusic.currentTime);
+                });
+
+                // Handle music end (shouldn't happen due to loop, but just in case)
+                backgroundMusic.addEventListener('ended', () => {
+                    backgroundMusic.currentTime = 0;
+                    if (localStorage.getItem('musicPlaying') !== 'false') {
+                        playMusic();
+                    }
+                });
+            }
+        }
+
+        function playMusic() {
+            if (backgroundMusic) {
+                backgroundMusic.play().then(() => {
+                    localStorage.setItem('musicPlaying', 'true');
+                    updateMusicUI(true);
+                }).catch(error => {
+                    console.log('Autoplay prevented:', error);
+                    // Autoplay was prevented, user needs to interact first
+                    updateMusicUI(false);
+                });
+            }
+        }
+
+        function pauseMusic() {
+            if (backgroundMusic) {
+                backgroundMusic.pause();
+                localStorage.setItem('musicPlaying', 'false');
+                updateMusicUI(false);
+            }
+        }
+
+        function updateMusicUI(isPlaying) {
+            if (musicControl && musicIcon) {
+                if (isPlaying) {
+                    musicControl.classList.add('playing');
+                    musicIcon.textContent = '🎵';
+                    musicControl.title = 'Click to pause music';
+                } else {
+                    musicControl.classList.remove('playing');
+                    musicIcon.textContent = '🔇';
+                    musicControl.title = 'Click to play music';
+                }
+            }
+        }
+
+        // Music control click handler
+        if (musicControl) {
+            musicControl.addEventListener('click', () => {
+                if (backgroundMusic.paused) {
+                    playMusic();
+                } else {
+                    pauseMusic();
+                }
+            });
+        }
+
+        // Initialize music when page loads
+        document.addEventListener('DOMContentLoaded', initMusic);
+
+        // Try to play music on first user interaction
+        let hasInteracted = false;
+        function handleFirstInteraction() {
+            if (!hasInteracted && localStorage.getItem('musicPlaying') !== 'false') {
+                hasInteracted = true;
+                playMusic();
+                // Remove listeners after first interaction
+                document.removeEventListener('click', handleFirstInteraction);
+                document.removeEventListener('keydown', handleFirstInteraction);
+                document.removeEventListener('touchstart', handleFirstInteraction);
+            }
+        }
+
+        document.addEventListener('click', handleFirstInteraction);
+        document.addEventListener('keydown', handleFirstInteraction);
+        document.addEventListener('touchstart', handleFirstInteraction);
 
         // Initialize wave effects when page loads
         initWaveEffect();

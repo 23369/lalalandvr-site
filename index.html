@@ -1350,6 +1350,154 @@
             color: #00ffff;
         }
 
+        /* Pixel Characters with VR Headsets */
+        .pixel-characters {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 1000;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .pixel-character {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 50px;
+            image-rendering: pixelated;
+            animation: walkCycle 2s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        /* Yellow Dinosaur with VR */
+        .dino-character {
+            left: 10%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 50"><rect x="12" y="8" width="16" height="8" fill="%23333" rx="4"/><rect x="10" y="10" width="4" height="4" fill="%23666"/><rect x="26" y="10" width="4" height="4" fill="%23666"/><rect x="8" y="16" width="24" height="20" fill="%23FFD700"/><rect x="12" y="20" width="4" height="4" fill="%23333"/><rect x="24" y="20" width="4" height="4" fill="%23333"/><rect x="16" y="26" width="8" height="2" fill="%23333"/><rect x="4" y="18" width="8" height="8" fill="%23FFD700"/><rect x="28" y="18" width="8" height="8" fill="%23FFD700"/><rect x="6" y="22" width="4" height="2" fill="%23333"/><rect x="30" y="22" width="4" height="2" fill="%23333"/><rect x="12" y="36" width="6" height="14" fill="%23FFB000"/><rect x="22" y="36" width="6" height="14" fill="%23FFB000"/><rect x="8" y="46" width="8" height="4" fill="%23333"/><rect x="24" y="46" width="8" height="4" fill="%23333"/></svg>') center/contain no-repeat;
+            animation-delay: 0s;
+        }
+
+        /* Blue Star with VR */
+        .star-character {
+            left: 45%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 50"><rect x="12" y="8" width="16" height="8" fill="%23333" rx="4"/><rect x="10" y="10" width="4" height="4" fill="%23666"/><rect x="26" y="10" width="4" height="4" fill="%23666"/><polygon points="20,16 24,24 32,24 26,30 28,38 20,34 12,38 14,30 8,24 16,24" fill="%2300BFFF"/><rect x="18" y="22" width="2" height="2" fill="%23fff"/><rect x="22" y="22" width="2" height="2" fill="%23fff"/><rect x="16" y="32" width="8" height="14" fill="%230080FF"/><rect x="12" y="42" width="6" height="8" fill="%23333"/><rect x="22" y="42" width="6" height="8" fill="%23333"/></svg>') center/contain no-repeat;
+            animation-delay: 0.7s;
+        }
+
+        /* Human Character with VR */
+        .human-character {
+            left: 80%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 50"><rect x="12" y="6" width="16" height="10" fill="%23333" rx="4"/><rect x="10" y="8" width="4" height="4" fill="%23666"/><rect x="26" y="8" width="4" height="4" fill="%23666"/><rect x="14" y="16" width="12" height="12" fill="%23FFDBAC" rx="2"/><rect x="17" y="20" width="2" height="2" fill="%23333"/><rect x="21" y="20" width="2" height="2" fill="%23333"/><rect x="18" y="24" width="4" height="2" fill="%23333"/><rect x="12" y="28" width="16" height="16" fill="%23FF6B6B"/><rect x="16" y="32" width="2" height="8" fill="%23333"/><rect x="22" y="32" width="2" height="8" fill="%23333"/><rect x="8" y="30" width="6" height="12" fill="%23FFDBAC"/><rect x="26" y="30" width="6" height="12" fill="%23FFDBAC"/><rect x="14" y="44" width="5" height="6" fill="%23654321"/><rect x="21" y="44" width="5" height="6" fill="%23654321"/></svg>') center/contain no-repeat;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes walkCycle {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            25% {
+                transform: translateY(-2px) scaleX(1.05);
+            }
+            50% {
+                transform: translateY(0px) scaleX(0.95);
+            }
+            75% {
+                transform: translateY(-1px) scaleX(1.02);
+            }
+        }
+
+        /* Floating effect when scrolling */
+        .pixel-character.floating {
+            animation: floatWithPage 1s ease-in-out;
+        }
+
+        @keyframes floatWithPage {
+            0% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-8px) scale(1.1);
+            }
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+        }
+
+        /* VR Glow Effect */
+        .pixel-character::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            width: 20px;
+            height: 10px;
+            background: radial-gradient(ellipse, rgba(0, 255, 255, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: vrGlow 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes vrGlow {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.2);
+            }
+        }
+
+        /* Breathing animation for characters */
+        .pixel-character:hover {
+            animation: breathe 1s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Direction change animation */
+        .pixel-character.moving-left {
+            transform: scaleX(-1);
+        }
+
+        .pixel-character.moving-right {
+            transform: scaleX(1);
+        }
+
+        /* Special effects */
+        .pixel-character::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 30px;
+            height: 3px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+            transform: translateX(-50%);
+            border-radius: 50%;
+            animation: shadowPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 1rem;
@@ -1410,6 +1558,13 @@
     <!-- Music Control Button -->
     <div class="music-control" id="musicControl">
         <span class="music-icon" id="musicIcon">🎵</span>
+    </div>
+    
+    <!-- Pixel Characters with VR Headsets -->
+    <div class="pixel-characters">
+        <div class="pixel-character dino-character" id="dinoCharacter"></div>
+        <div class="pixel-character star-character" id="starCharacter"></div>
+        <div class="pixel-character human-character" id="humanCharacter"></div>
     </div>
     
     <!-- Navigation Dots -->
@@ -1660,7 +1815,7 @@
     </section>
 
     <script>
-        // Enhanced Gallery with Video Management (代码1的Gallery逻辑)
+        // Carousel Logic (Enhanced Gallery)
         let currentIndex = 0;
         const cards = document.querySelectorAll('.video-card');
         const dots = document.querySelectorAll('.progress-dot');
@@ -1706,7 +1861,7 @@
             updateCarousel();
         }
 
-        // Video Controls
+        // Video Controls for Enhanced Gallery
         document.querySelectorAll('.video-card').forEach(card => {
             const video = card.querySelector('.video-element');
             const playPauseBtn = card.querySelector('.play-pause');
@@ -1752,7 +1907,7 @@
             }
         });
 
-        // Keyboard Navigation
+        // Keyboard Navigation for Enhanced Gallery
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') {
                 navigateCarousel(-1);
@@ -1761,7 +1916,7 @@
             }
         });
 
-        // Touch/Swipe Support
+        // Touch/Swipe Support for Enhanced Gallery
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -1782,7 +1937,7 @@
             }
         }
 
-        // Generate Particles
+        // Generate Particles for Enhanced Gallery
         function createParticles() {
             const container = document.getElementById('particlesContainer');
             for (let i = 0; i < 30; i++) {
@@ -1795,11 +1950,6 @@
             }
         }
 
-        // Initialize Enhanced Gallery
-        createParticles();
-        updateCarousel();
-
-        // 保持原有的其他JavaScript功能
         // Smooth scrolling and navigation
         function scrollToSection(index) {
             const section = document.getElementById(`section-${index}`);
@@ -1950,39 +2100,6 @@
                 matrixRain.appendChild(column);
             }
         }
-
-        // Initialize
-        generateASCII();
-        createMatrixRain();
-
-        // Update ASCII characters periodically
-        setInterval(updateRandomChars, 100);
-
-        // Regenerate on resize
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                const asciiBackground = document.getElementById('asciiBackground');
-                const matrixRain = document.getElementById('matrixRain');
-                
-                if (asciiBackground) asciiBackground.innerHTML = '';
-                if (matrixRain) matrixRain.innerHTML = '';
-                
-                generateASCII();
-                createMatrixRain();
-            }, 250);
-        });
-
-        // Add random glitch effect
-        setInterval(() => {
-            if (Math.random() < 0.1) {
-                document.body.style.filter = 'hue-rotate(180deg)';
-                setTimeout(() => {
-                    document.body.style.filter = 'none';
-                }, 50);
-            }
-        }, 3000);
 
         // Initialize 3D Wave Effect for Section 5
         function initWaveEffect() {
@@ -2174,9 +2291,227 @@
         document.addEventListener('keydown', handleFirstInteraction);
         document.addEventListener('touchstart', handleFirstInteraction);
 
-        // Initialize wave effects when page loads
+        // Pixel Characters Management
+        const characters = {
+            dino: document.getElementById('dinoCharacter'),
+            star: document.getElementById('starCharacter'),
+            human: document.getElementById('humanCharacter')
+        };
+
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'down';
+        let characterPositions = { dino: 10, star: 45, human: 80 };
+        let isMoving = { dino: false, star: false, human: false };
+
+        // Character movement based on scroll
+        function updateCharacterMovement() {
+            const currentScrollY = window.scrollY;
+            const scrollDelta = currentScrollY - lastScrollY;
+            
+            // 确定滚动方向
+            if (Math.abs(scrollDelta) > 5) { // 避免小幅滚动的抖动
+                scrollDirection = scrollDelta > 0 ? 'down' : 'up';
+                
+                // 添加浮动效果
+                Object.values(characters).forEach(char => {
+                    char.classList.add('floating');
+                    setTimeout(() => {
+                        char.classList.remove('floating');
+                    }, 1000);
+                });
+                
+                // 根据滚动方向移动角色
+                moveCharacters(scrollDirection);
+            }
+            
+            lastScrollY = currentScrollY;
+        }
+
+        function moveCharacters(direction) {
+            const moveDistance = 2; // 每次移动的距离
+            
+            Object.keys(characters).forEach((key, index) => {
+                const char = characters[key];
+                let currentPos = characterPositions[key];
+                
+                // 根据滚动方向和角色索引决定移动方向
+                if (direction === 'down') {
+                    currentPos += moveDistance + (index * 0.5); // 不同角色不同速度
+                    char.classList.remove('moving-left');
+                    char.classList.add('moving-right');
+                } else {
+                    currentPos -= moveDistance + (index * 0.5);
+                    char.classList.remove('moving-right');
+                    char.classList.add('moving-left');
+                }
+                
+                // 边界检查和循环
+                if (currentPos > 100) {
+                    currentPos = -10; // 从左边重新进入
+                } else if (currentPos < -10) {
+                    currentPos = 100; // 从右边重新进入
+                }
+                
+                characterPositions[key] = currentPos;
+                char.style.left = currentPos + '%';
+                
+                // 标记为移动状态
+                isMoving[key] = true;
+                setTimeout(() => {
+                    isMoving[key] = false;
+                    char.classList.remove('moving-left', 'moving-right');
+                }, 500);
+            });
+        }
+
+        // 随机移动角色（当没有滚动时）
+        function randomCharacterMovement() {
+            Object.keys(characters).forEach((key, index) => {
+                if (!isMoving[key] && Math.random() < 0.1) { // 10%概率移动
+                    const char = characters[key];
+                    let currentPos = characterPositions[key];
+                    const moveDirection = Math.random() < 0.5 ? -1 : 1;
+                    const moveDistance = 1 + Math.random() * 2;
+                    
+                    currentPos += moveDirection * moveDistance;
+                    
+                    // 边界检查
+                    if (currentPos > 95) currentPos = 95;
+                    if (currentPos < 5) currentPos = 5;
+                    
+                    characterPositions[key] = currentPos;
+                    char.style.left = currentPos + '%';
+                    
+                    // 设置方向
+                    if (moveDirection > 0) {
+                        char.classList.remove('moving-left');
+                        char.classList.add('moving-right');
+                    } else {
+                        char.classList.remove('moving-right');
+                        char.classList.add('moving-left');
+                    }
+                    
+                    setTimeout(() => {
+                        char.classList.remove('moving-left', 'moving-right');
+                    }, 1000);
+                }
+            });
+        }
+
+        // 角色点击交互
+        Object.values(characters).forEach((char, index) => {
+            char.style.pointerEvents = 'auto';
+            char.style.cursor = 'pointer';
+            
+            char.addEventListener('click', () => {
+                // 点击时的特殊动画
+                char.style.animation = 'none';
+                char.offsetHeight; // 触发重绘
+                char.style.animation = 'breathe 0.5s ease-in-out 3';
+                
+                // 添加点击特效
+                const effect = document.createElement('div');
+                effect.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: radial-gradient(circle, rgba(0,255,255,0.6) 0%, transparent 70%);
+                    border-radius: 50%;
+                    animation: clickEffect 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                char.appendChild(effect);
+                setTimeout(() => {
+                    if (effect.parentNode) {
+                        effect.parentNode.removeChild(effect);
+                    }
+                }, 600);
+            });
+        });
+
+        // 添加点击特效的CSS动画
+        const clickEffectStyle = document.createElement('style');
+        clickEffectStyle.textContent = `
+            @keyframes clickEffect {
+                0% {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(3);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(clickEffectStyle);
+
+        // 监听滚动事件
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            updateCharacterMovement();
+            
+            // 清除之前的超时
+            clearTimeout(scrollTimeout);
+            
+            // 设置新的超时，在滚动停止后重置角色状态
+            scrollTimeout = setTimeout(() => {
+                Object.values(characters).forEach(char => {
+                    char.classList.remove('moving-left', 'moving-right');
+                });
+            }, 1000);
+        });
+
+        // 定期随机移动
+        setInterval(randomCharacterMovement, 3000);
+
+        // 初始化角色位置
+        function initCharacters() {
+            Object.keys(characters).forEach(key => {
+                const char = characters[key];
+                char.style.left = characterPositions[key] + '%';
+            });
+        }
+
+        // Initialize
+        generateASCII();
+        createMatrixRain();
+        createParticles();
+        updateCarousel();
         initWaveEffect();
         initWaveParticles();
+        initCharacters(); // 初始化像素角色
+
+        // Update ASCII characters periodically
+        setInterval(updateRandomChars, 100);
+
+        // Regenerate on resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const asciiBackground = document.getElementById('asciiBackground');
+                const matrixRain = document.getElementById('matrixRain');
+                
+                if (asciiBackground) asciiBackground.innerHTML = '';
+                if (matrixRain) matrixRain.innerHTML = '';
+                
+                generateASCII();
+                createMatrixRain();
+            }, 250);
+        });
+
+        // Add random glitch effect
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                document.body.style.filter = 'hue-rotate(180deg)';
+                setTimeout(() => {
+                    document.body.style.filter = 'none';
+                }, 50);
+            }
+        }, 3000);
     </script>
 </body>
 </html>
